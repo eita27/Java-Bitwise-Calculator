@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class BitwiseCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("\nEnter first number (or type STOP to quit): ");
+            String input = scanner.next();
+
+            if (input.equalsIgnoreCase("STOP")) {
+                System.out.println("Program terminated.");
+                break;
+            }
+
+            int num1;
+            try {
+                num1 = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                continue;
+            }
+
+            System.out.print("Enter second number: ");
+            int num2;
+            try {
+                num2 = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                scanner.nextLine();
+                continue;
+            }
+
+        System.out.println("\nBitwise Calculator");
+        System.out.println("1. & \tAND");
+        System.out.println("2. | \tOR");
+        System.out.println("3. ^ \tXOR");
+        System.out.println("4. << \tLEFT SHIFT");
+        System.out.println("5. >> \tRIGHT SHIFT");
+
+        System.out.print("\nChoose a bitwise operation: ");
+        int operator = scanner.nextInt();
+
+            int result;
+            boolean valid = true;
+
+            switch (operator) {
+                case 1:
+                    result = num1 & num2;
+                    break;
+                case 2:
+                    result = num1 | num2;
+                    break;
+                case 3:
+                    result = num1 ^ num2;
+                    break;
+                case 4:
+                    result = num1 << num2;
+                    break;
+                case 5:
+                    result = num1 >> num2;
+                    break;
+                default:
+                    System.out.println("Unidentified Operation");
+                    valid = false;
+                    result = 0;
+                    break;
+            }
+
+            if (valid) {
+                System.out.println("Result: " + result);
+            }
+        }
+
+        scanner.close();
+    }
+}
